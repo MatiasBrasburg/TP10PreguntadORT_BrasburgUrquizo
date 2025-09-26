@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 public class Juego
 {
  [JsonProperty]
@@ -28,16 +30,29 @@ Username = "";
 PuntajeActual = 0; 
 CantidadPreguntasCorrectas = 0;
 ContadorNroPreguntaActual = 0; 
-PreguntaActual = null;
-ListaPreguntas = null; 
-ListaRespuestas = null; 
+PreguntaActual = new Pregunta();
+ListaPreguntas = new List<Pregunta>(); 
+ListaRespuestas = new List<Respuesta>(); 
 
 }
 
+public List<Categoria> ObtenerCategoria()
+{
+List<Categoria> ListaCategorias = new List<Categoria>();
+ListaCategorias = BD.TraerCategorias();
+
+return ListaCategorias;
+}
 
 
+public void CargarPartida(string username, int categoria)
+{
+InicializarJuego();
+
+ListaPreguntas = BD.ObtenerPreguntas(categoria);
 
 
+}
 
 
 

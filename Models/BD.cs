@@ -24,7 +24,7 @@ DataBase=PreguntadosBd(Prog);Integrated Security=True;TrustServerCertificate=Tru
 // }
 
 
-public static List<Categoria> TraerListaIntegrantes ()
+public static List<Categoria> TraerCategorias ()
 {
 List<Categoria> ListCategorias = new List<Categoria>();
     using (SqlConnection connection = new SqlConnection(_connectionString))
