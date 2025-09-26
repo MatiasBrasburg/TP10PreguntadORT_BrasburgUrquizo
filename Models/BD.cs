@@ -7,21 +7,21 @@ public static class BD
 {
 
 private static string _connectionString = @"Server=localhost;
-DataBase=ProgTP6BaseDeDatos;Integrated Security=True;TrustServerCertificate=True;";
+DataBase=PreguntadosBd(Prog);Integrated Security=True;TrustServerCertificate=True;";
 
 
-
-public static Integrantes CompararUsuarioEnBD (string NombreUSU, string Contrasena)
-{
-Integrantes existe = null;
-    using (SqlConnection connection = new SqlConnection(_connectionString))
-    {
-        string query = "SELECT * FROM Integrantes where NombreUsuario = @pNombreusuarios AND Contrasena = @pContrasena ";
-        existe = connection.QueryFirstOrDefault<Integrantes>(query, new {pNombreusuarios = NombreUSU, pContrasena = Contrasena});
-    }
-    Console.WriteLine(existe);
-    return existe;
-}
+// POR SI DESPUES NECESITAAMOS TRAER ALGO SOLO DE LA BD 
+// public static Integrantes CompararUsuarioEnBD (string NombreUSU, string Contrasena)
+// {
+// Integrantes existe = null;
+//     using (SqlConnection connection = new SqlConnection(_connectionString))
+//     {
+//         string query = "SELECT * FROM Integrantes where NombreUsuario = @pNombreusuarios AND Contrasena = @pContrasena ";
+//         existe = connection.QueryFirstOrDefault<Integrantes>(query, new {pNombreusuarios = NombreUSU, pContrasena = Contrasena});
+//     }
+//     Console.WriteLine(existe);
+//     return existe;
+// }
 
 
 public static List<Categoria> TraerListaIntegrantes ()
@@ -35,24 +35,24 @@ List<Categoria> ListCategorias = new List<Categoria>();
     return ListCategorias;
 }
 
-public static List<Preguntas> ObtenerPreguntas (int IdCategoria)
+public static List<Pregunta> ObtenerPreguntas (int IdCategoria)
 {
-List<Preguntas> ListPreguntas = new List<Preguntas>();
+List<Pregunta> ListPreguntas = new List<Pregunta>();
     using (SqlConnection connection = new SqlConnection(_connectionString))
     {
         string query = "SELECT * FROM Preguntas Where IdCategoria = @IdCategoria";
-        ListPreguntas = connection.Query<Preguntas>(query, new{IdCategoria = IdCategoria}).ToList();
+        ListPreguntas = connection.Query<Pregunta>(query, new{IdCategoria = IdCategoria}).ToList();
     }
     return ListPreguntas;
 }
 
-public static List<Respuestas> ObtenerRespestas (int IdPregunta)
+public static List<Respuesta> ObtenerRespestas (int IdPregunta)
 {
-List<Respuestas> ListRespuestas = new List<Respuestas>();
+List<Respuesta> ListRespuestas = new List<Respuesta>();
     using (SqlConnection connection = new SqlConnection(_connectionString))
     {
         string query = "SELECT * FROM Respuestas Where IdPregunta = @IdPregunta";
-        ListRespuestas = connection.Query<Respuestas>(query, new{IdPregunta = IdPregunta}).ToList();
+        ListRespuestas = connection.Query<Respuesta>(query, new{IdPregunta = IdPregunta}).ToList();
     }
     return ListRespuestas;
 }
