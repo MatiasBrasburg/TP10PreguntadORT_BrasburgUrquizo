@@ -1,0 +1,6 @@
+@{
+    ViewData["Title"] = "Fin";
+}
+<p>Nombre: @ViewBag.username </p>
+<p>Puntaje Final: @ViewBag.PuntajeActual </p>
+<p>Volver a jugar??: Aprete <a  href= '@Url.Action("ConfigurarJuego", "Home")' alt = "Ir al ">  acá</a> </p>

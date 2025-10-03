@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Configuracion";
+}
+
+<section> 
+<h2> Configuración </h2>
+
+  <form method="POST" action='@Url.Action("Comenzar", "Home")'>
+            <p>
+               Intoduzca su nombre: 
+            <input type="text" name="username" value="username" placeholder ="Nombre" required> <br>
+            
+            </p>
+         <button type="submit">Enviar</button>
+    </form> 
+
+  <form method="POST" action='@Url.Action("Comenzar", "Home")'>
+            <p>
+               Elija su categoria: 
+             <label><input type="radio" name="categoria" value="-1" required> Todas</label><br>
+             <label><input type="radio" name="categoria" value="1"> Geografía</label><br>
+             <label><input type="radio" name="categoria" value="2"> Historia</label><br>
+             <label><input type="radio" name="categoria" value="3"> Ciencia</label><br>
+             <label><input type="radio" name="categoria" value="4"> Deportes</label><br>
+             <label><input type="radio" name="categoria" value="5"> Arte</label><br>
+            </p>
+         <button type="submit">Enviar</button>
+    </form> 
+</section>

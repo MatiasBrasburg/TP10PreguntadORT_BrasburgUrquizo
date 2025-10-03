@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Configuracion";
+}
+
+<section> 
+<h2> Preguntados  </h2>
+<h3>@ViewBag.Username tienes:  @ViewBag.PuntajeActual puntos</h3>
+
+  <p>Pregunta numero:  @ViewBag.PuntajeActual.Id </p>
+
+  <p>@ViewBag.ListaPreguntas[ViewBag.].Enunciado </p> //hacer esto bien, ns como poner el enuncuado de la pregunta actual
+
+  <form method="POST" action='@Url.Action("Juego", "Home")'>
+            <p>
+               Elija la respuesta correcta: 
+             <select name="categoria" required>
+    @foreach(Respuesta R in ViewBag.ListRespuesta.Count)
+    {
+          <option value="@R.Opcion">@R.Contenido</option>
+    }
+  </select>
+  
+            </p>
+         <button type="submit">Enviar</button>
+    </form> 
+
+</section>
